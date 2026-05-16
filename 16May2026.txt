@@ -1,0 +1,38 @@
+create database VITCampus;
+use VITCampus;
+create table CSE(
+sid int8, 
+sname varchar(50),
+smarks int1
+);
+
+create table EEE(
+sid int8, 
+sname varchar(50),
+smarks int1
+);
+create table MTech(
+sid int8, 
+sname varchar(50),
+smarks int1
+);
+show tables from VITCampus;
+insert into CSE values (101,'a',80);
+insert into CSE values (102,'b',60);
+insert into CSE values (103,'c',50);
+insert into CSE values (104,'d',40);
+insert into CSE values (105,'e',45);
+select * from CSE;
+
+insert into EEE values(106, 'f',70);
+insert into EEE values(107, 'g',75);
+insert into EEE values(108, 'h',60);
+insert into EEE values(109, 'i',76);
+insert into EEE values(110, 'j',35);
+select * from EEE;
+
+insert into MTech values (111, 'k', 60);
+insert into MTech values (112, 'l', 66);
+insert into MTech values (113, 'm', 80);
+insert into MTech values (114, 'n', 85);
+select * from MTech;
