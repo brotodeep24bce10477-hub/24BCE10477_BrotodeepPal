@@ -1,0 +1,90 @@
+#check --> (write the condition according to our wish)
+use vitcampus;
+create table persons (
+	ID int not null,
+    lastName varchar(255) unique not null,
+    firstName varchar(255) not null,
+    
+    Age int
+    
+);
+
+desc persons;
+insert into persons values (101,'yyy','alex',29, 'vit');
+insert into persons values (101,'zzz','Bob',30, 'Vit bhopal');
+select * from persons;
+
+alter table persons
+add campus varchar(255) not null;
+
+alter table persons
+add unique (campus);
+
+alter table persons
+drop constraint Age;
+
+drop table persons;
+create table persons (
+	ID int not null,
+    lastName varchar(255) unique not null,
+    firstName varchar(255) not null,
+    
+    Age int not null,
+    check (Age>=18 and age <=23)
+    
+);
+
+insert into persons values (101,'yyy','alex',23);
+create table persons1 (
+	ID int not null,
+    lastName varchar(255) unique not null,
+    firstName varchar(255) not null,
+    
+    Age int not null,
+    city varchar(255) default 'chennai'
+);
+desc persons1;
+
+create table products(
+pid int primary key,
+pname varchar(100) not null,
+prefNo int not null unique
+);
+
+desc products;
+
+insert into products values (101, 'Electronics', 26357);
+insert into products values (102, 'Furniture', 26389);
+
+select * from products;
+
+alter table products
+add primary key (pid);
+
+alter table products
+drop primary key;
+
+drop table products;
+
+# foreign key --
+
+create table category (
+cid int primary key,
+cname varchar(100) not null
+);
+insert into category values (101, 'electronics'), (102, 'Home appliances');
+select * from category;
+
+create table products(
+	pid int primary key,
+	pname varchar(100) not null,
+    cid int,
+	foreign key (cid) references category (cid)
+);
+
+desc products;
+delete from category where cid = 101; #this will not delect as it linked with foreign key
+
+insert into products values (501, 'MSI Laptop', 101);
+insert into products values (502, 'wooden table', 102);
+insert into products values (503, 'powerbank', 101);
