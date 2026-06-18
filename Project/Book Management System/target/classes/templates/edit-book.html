@@ -1,0 +1,101 @@
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Edit Book</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h2>✏️ Edit Book</h2>
+
+    <form th:action="@{/books/update/{id}(id=${book.id})}"
+          th:object="${book}"
+          method="post">
+
+        <input type="text"
+               th:field="*{title}"
+               placeholder="Title"
+               required>
+
+        <input type="text"
+               th:field="*{author}"
+               placeholder="Author"
+               required>
+
+        <input type="text"
+               th:field="*{genre}"
+               placeholder="Genre"
+               required>
+
+        <input type="number"
+               step="0.01"
+               th:field="*{price}"
+               placeholder="Price"
+               min="0"
+               required>
+
+        <input type="number"
+               th:field="*{quantity}"
+               placeholder="Quantity"
+               min="0"
+               required>
+
+        <input type="number"
+               th:field="*{publicationYear}"
+               placeholder="Publication Year"
+               min="1000"
+               max="2100"
+               required>
+
+        <label>
+
+            <input type="checkbox"
+                   th:field="*{availabilityStatus}">
+
+            Available
+
+        </label>
+
+        <br><br>
+
+        <button type="submit"
+                class="btn btn-add">
+
+            Update Book
+
+        </button>
+
+    </form>
+
+    <br>
+
+    <a th:href="@{/books}"
+       class="btn btn-edit">
+        Back to Books
+    </a>
+
+    <a th:href="@{/dashboard}"
+       class="btn">
+        Dashboard
+    </a>
+
+    <a th:href="@{/logout}"
+       class="btn btn-delete">
+        Logout
+    </a>
+
+</div>
+
+</body>
+
+</html>
+```

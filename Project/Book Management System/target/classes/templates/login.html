@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Login</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <h2>📚 Login</h2>
+
+    <!-- Error Message -->
+    <div th:if="${param.error}"
+         class="message error">
+        Invalid Username or Password
+    </div>
+
+    <!-- Logout Success -->
+    <div th:if="${param.logout}"
+         class="message success">
+        Logged out successfully
+    </div>
+
+    <!-- Registration Success -->
+    <div th:if="${param.registered}"
+         class="message success">
+        Registration successful! Please login.
+    </div>
+
+    <!-- Login Form -->
+    <form th:action="@{/login}"
+          method="post">
+
+        <div class="form-group">
+
+            <label>Username</label>
+
+            <input type="text"
+                   name="username"
+                   placeholder="Enter username"
+                   required>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Password</label>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter password"
+                   required>
+
+        </div>
+
+        <button type="submit"
+                class="btn-login">
+            Login
+        </button>
+
+    </form>
+
+    <!-- Forgot Password -->
+    <div class="login-links">
+
+        <a th:href="@{/forgot-password}">
+            Forgot Password?
+        </a>
+
+    </div>
+
+    <!-- Register -->
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a th:href="@{/register}">
+            Register Here
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

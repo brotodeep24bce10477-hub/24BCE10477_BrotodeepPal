@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Dashboard</title>
+
+    <link rel="stylesheet"
+          th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📚 Book Management Dashboard</h1>
+
+    <p>Welcome! You have successfully logged in.</p>
+
+    <div class="dashboard-buttons">
+
+        <a th:href="@{/books}"
+           class="btn btn-edit">
+            View Books
+        </a>
+
+        <a th:href="@{/books/add}"
+           class="btn btn-add">
+            Add New Book
+        </a>
+
+        <a th:href="@{/logout}"
+           class="btn btn-delete">
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Book Management</title>
+</head>
+
+<body>
+
+<h1>Book Management System</h1>
+
+<a href="/add">Add Book</a>
+
+<table border="1">
+
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Year</th>
+        <th>Available</th>
+        <th>Action</th>
+    </tr>
+
+    <tr th:each="book : ${books}">
+
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.price}"></td>
+        <td th:text="${book.quantity}"></td>
+        <td th:text="${book.publicationYear}"></td>
+        <td th:text="${book.availabilityStatus}"></td>
+
+        <td>
+            <a th:href="@{/delete/{id}(id=${book.id})}">
+                Delete
+            </a>
+        </td>
+
+    </tr>
+
+</table>
+
+</body>
+</html>

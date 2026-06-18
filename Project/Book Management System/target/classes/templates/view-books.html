@@ -1,0 +1,112 @@
+```html
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Book Inventory</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📚 Book Management System</h1>
+
+    <div class="nav-buttons">
+
+        <a th:href="@{/books/add}" class="btn btn-add">
+            Add New Book
+        </a>
+
+        <a th:href="@{/dashboard}" class="btn">
+            Dashboard
+        </a>
+
+        <a th:href="@{/logout}" class="btn btn-delete">
+            Logout
+        </a>
+
+    </div>
+
+    <table>
+
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Year</th>
+            <th>Available</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="book : ${books}">
+
+            <td th:text="${book.title}"></td>
+
+            <td th:text="${book.author}"></td>
+
+            <td th:text="${book.genre}"></td>
+
+            <td>
+                ₹<span th:text="${book.price}"></span>
+            </td>
+
+            <td th:text="${book.quantity}"></td>
+
+            <td th:text="${book.publicationYear}"></td>
+
+            <td>
+
+                <span th:if="${book.availabilityStatus}"
+                      class="available">
+                    Available
+                </span>
+
+                <span th:unless="${book.availabilityStatus}"
+                      class="unavailable">
+                    Out of Stock
+                </span>
+
+            </td>
+
+            <td>
+
+                <a th:href="@{/books/edit/{id}(id=${book.id})}"
+                   class="btn btn-edit">
+                    Edit
+                </a>
+
+                <a th:href="@{/books/delete/{id}(id=${book.id})}"
+                   class="btn btn-delete"
+                   onclick="return confirm('Delete this book?')">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        <tr th:if="${#lists.isEmpty(books)}">
+            <td colspan="8" style="text-align: center;">
+                No books found.
+            </td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>
+```
